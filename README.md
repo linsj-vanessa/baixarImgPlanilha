@@ -1,36 +1,46 @@
-# Automação para Download de Imagens via Google Planilhas
+# Automação: Download de Imagens via Google Planilhas
 
-Este projeto foi criado para automatizar o download de imagens listadas em uma planilha do Google Sheets, onde os links estão em formato de hyperlink ("Foto"). As imagens são salvas em uma pasta específica do Google Drive.
+Este projeto automatiza o processo de **download de imagens** listadas em uma **Google Planilha**, onde os links estão formatados como **texto com hyperlink** (ex: "Foto").
 
-## ⚙️ Funcionalidades
+As imagens são baixadas automaticamente e salvas em uma pasta do Google Drive, usando o nome de outra coluna como referência.
 
-- Percorre uma planilha linha por linha a partir da linha 2 (pulando os títulos)
-- Extrai o link de imagens da Coluna F
-- Usa o conteúdo da Coluna C como nome da imagem (sem acentos ou caracteres especiais)
-- Salva todas as imagens em uma pasta do Google Drive
-- Cria uma marcação automática na planilha com status de OK ou erro
-- Executa de forma automática a cada 5 minutos até terminar.
+---
 
-## 🛠️ Tecnologias
+## 🚀 Funcionalidades
 
-- Google Apps Script
-- Google Sheets
-- Google Drive
+- ✅ Percorre linha por linha da planilha (a partir da linha 2)
+- 🔗 Extrai o link real das imagens contidas em rich text (hiperlink)
+- 📂 Baixa as imagens e salva em uma pasta no Google Drive
+- 🏷️ Nomeia os arquivos com base em outro campo da planilha (sem acentos ou caracteres especiais)
+- ✏️ Marca automaticamente na planilha o status do download: `OK` ou `ERRO`
+- ⏱️ Roda de forma automática a cada 5 minutos até concluir todas as imagens
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- [Google Apps Script](https://developers.google.com/apps-script)
+- Google Sheets (Planilhas Google)
+- Google Drive API (nativa)
+
+---
 
 ## 🧪 Exemplo de Planilha
+![print-planilha](https://github.com/user-attachments/assets/54c59de7-3957-4991-8742-2331a681e985)
 
-| Nome da Imagem | ... | Link da Imagem |
-|----------------|-----|----------------|
-| Coluna com algum nome | ... | [Foto](https://drive.google.com/file/d/...) |
 
-## 📁 Estrutura do Projeto
+---
 
-- `script.gs`: Código completo do projeto
-- `exemplos/estrutura-da-planilha.png`: Exemplo de como a planilha deve estar estruturada
+## 🧰 Como Usar
 
-## 🚀 Como Usar
+1. **Prepare sua planilha** no seguinte formato:
+   - Coluna **C**: Nome da imagem
+   - Coluna **F**: Texto com hyperlink (ex: "Foto")
+   - Coluna **G**: Deixe vazia — o script marcará o status automaticamente
+   - Ou altere o código para as suas colunas
 
-1. Crie uma planilha com a estrutura acima ou adapte a sua planilha
-2. Copie o código de `script.gs` no editor do Google Apps Script
-3. Substitua o ID da pasta de destino pelo seu
-4. Execute a função `criarGatilhoParaBaixarImagens()` para iniciar
+2. No código, edite a linha com o ID da pasta de destino no Google Drive:
+   
+```javascript
+const ID_PASTA_DESTINO = 'SEU_ID_AQUI';
+
